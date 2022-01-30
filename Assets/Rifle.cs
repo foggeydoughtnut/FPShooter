@@ -4,7 +4,6 @@ public class Rifle : MonoBehaviour
 {
     [Header("Gun Values")]
     public float damage = 10f;
-    public float headShotDamage = 15f;
     public float range = 100f;
     public float fireRate = 15f;
     public float impactForce = 30f;
