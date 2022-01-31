@@ -20,7 +20,7 @@ public class SwapWeapons : MonoBehaviour
         Debug.Log(Input.GetButton("Fire2"));
 
 
-        if (!Input.GetButton("Fire2") || !Input.GetButtonDown("Fire2") || !Input.GetButtonUp("Fire2"))
+        if (!Input.GetButton("Fire2"))
         {
             if (Input.GetButtonDown("SwapToSecondary"))
             {
