@@ -8,19 +8,35 @@ public class SwapWeapons : MonoBehaviour
     public GameObject secondary;
     public float swapSpeed = 1f;
 
+    Scope scope;
+
+
+    private void Start()
+    {
+        scope = new Scope();
+    }
     private void Update()
     {
-        if (Input.GetButtonDown("SwapToSecondary"))
-        {
-            Debug.Log("Swap to secondary");
-            StartCoroutine(SwapToSecondary());   
+        Debug.Log(Input.GetButton("Fire2"));
 
-        }
-        else if (Input.GetButtonDown("SwapToPrimary"))
+
+        if (!Input.GetButton("Fire2") || !Input.GetButtonDown("Fire2") || !Input.GetButtonUp("Fire2"))
         {
-            Debug.Log("Swap to primary");
-            StartCoroutine(SwapToPrimary());
+            if (Input.GetButtonDown("SwapToSecondary"))
+            {
+                Debug.Log("Swap to secondary");
+                StartCoroutine(SwapToSecondary());
+
+            }
+            else if (Input.GetButtonDown("SwapToPrimary"))
+            {
+                Debug.Log("Swap to primary");
+                StartCoroutine(SwapToPrimary());
+            }
         }
+
+       
+        
     }
 
     IEnumerator SwapToPrimary()
@@ -30,7 +46,7 @@ public class SwapWeapons : MonoBehaviour
         primary.SetActive(true);
     }
     IEnumerator SwapToSecondary()
-    {
+    { 
         primary.SetActive(false);
         yield return new WaitForSeconds(swapSpeed);
         secondary.SetActive(true);
