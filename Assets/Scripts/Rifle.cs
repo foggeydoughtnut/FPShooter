@@ -16,6 +16,11 @@ public class Rifle : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
 
+    [Header("GunTypes")]
+    public bool isPistol;
+    public bool isAR;
+    public bool isSniper;
+
     
 
 
@@ -41,6 +46,16 @@ public class Rifle : MonoBehaviour
 
     void Shoot()
     {
+        if (isPistol)
+        {
+            FindObjectOfType<AudioManager>().Play("Pistol");
+        } else if (isAR)
+        {
+            FindObjectOfType<AudioManager>().Play("ARShooting");
+        } else if (isSniper)
+        {
+            FindObjectOfType<AudioManager>().Play("SniperShot");
+        }
         muzzleFlash.Play();
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
